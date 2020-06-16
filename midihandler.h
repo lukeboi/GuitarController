@@ -3,14 +3,16 @@
 
 #include <qqml.h>
 #include <QObject>
+#include <QMidiOut.h>
+#include <QMidiFile.h>
 
-class midiHandler : public QObject
+class MidiHandler : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString filePath READ filePath WRITE setFilePath NOTIFY filePathChanged)
     QML_ELEMENT
 public:
-    explicit midiHandler(QObject *parent = nullptr);
+    explicit MidiHandler(QObject *parent = nullptr);
 
     QString filePath();
     void setFilePath(const QString &filePath);
@@ -20,6 +22,8 @@ signals:
 
 private:
     QString m_filePath;
+    QMidiFile* midiFile;
+    void loadMidiFile();
 };
 
 #endif // MIDIHANDLER_H
