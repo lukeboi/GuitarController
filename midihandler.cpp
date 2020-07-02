@@ -45,7 +45,18 @@ void MidiHandler::loadMidiFile() {
     //qInfo(m_filePath.right(m_filePath.size() - 8).toStdString().c_str());
     qInfo(relativeFilePath.toStdString().c_str());
 
+    midiFile = new QMidiFile;
     midiFile->load(relativeFilePath);
 
+    QList<QMidiEvent*> events = midiFile->events();
+    for (QMidiEvent* e : events) {
+        if (e->type() != QMidiEvent::Meta) {
+            int n = e->note();
+            qInfo() << n; //QString::number(n).toStdString().c_str());
+        }
+
+    }
+
     qInfo("loaded");
+
 }

@@ -1,8 +1,9 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
-import QtQuick.Controls 2.15
 import Qt.labs.platform 1.0
 import QtQuick.Dialogs 1.3
+import QtQuick.Controls 2.15
+import com.internal.MidiHandler 1.0
 
 Window {
     visible: true
@@ -35,5 +36,37 @@ Window {
         y: 25
         text: midiHandler.filePath
         font.pixelSize: 12
+    }
+
+    ListView {
+        required model
+        id: listView
+        x: 13
+        y: 58
+        width: 110
+        height: 160
+        delegate: Item {
+            id: element1
+            x: 5
+            width: 80
+            height: 40
+            Row {
+                id: row1
+                spacing: 10
+
+                Text {
+                    text: name
+                    font.bold: true
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+
+                Text {
+                    text: note
+                    font.weight: note.none
+                    anchors.verticalCenter: parent.verticalCenter
+                    font.bold: true
+                }
+            }
+        }
     }
 }

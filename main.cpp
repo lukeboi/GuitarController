@@ -6,6 +6,7 @@
 #include <QMidiFile.h>
 #include <midihandler.h>
 #include <QQmlContext>
+#include <guitaritem.h>
 
 int main(int argc, char *argv[])
 {
@@ -16,7 +17,11 @@ int main(int argc, char *argv[])
     MidiHandler* midiHandler = new MidiHandler();
     midiHandler->setFilePath("foo"); //have it run this to set it to the "please select a .mid prompt
 
-    //qmlRegisterType<MidiHandler>("com.internal.MidiHandler", 1, 0, "MidiHandler"); // MyQMLType will be usable with: import com.internal.MidiHandler 1.0
+    qmlRegisterType<MidiHandler>("com.internal.MidiHandler", 1, 0, "MidiHandler"); // MyQMLType will be usable with: import com.internal.MidiHandler 1.0
+
+//    QList<QObject *> dataList =  {
+//        new guitarItem("note 1", 69)
+//    };
 
     //I commented this out because when i did nothing broke and i want to keep things simple
 //    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
