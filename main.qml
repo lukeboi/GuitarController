@@ -2,7 +2,7 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import Qt.labs.platform 1.0
 import QtQuick.Dialogs 1.3
-import QtQuick.Controls 2.15
+import QtQuick.Controls 2.12
 import com.internal.MidiHandler 1.0
 
 Window {
@@ -10,6 +10,10 @@ Window {
     width: 640
     height: 480
     title: qsTr("Guitar Controller")
+
+    MidiHandler {
+        id: midiHandler
+    }
 
     Button {
         id: button
@@ -34,7 +38,7 @@ Window {
         id: element
         x: 59
         y: 25
-        text: midiHandler.filePath
+        text: "foo"
         font.pixelSize: 12
     }
 
